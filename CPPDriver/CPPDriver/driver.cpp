@@ -9,13 +9,9 @@ DriverEntry(
     _In_ PUNICODE_STRING  RegistryPath
 )
 {
-    NTSTATUS status;
-    UNICODE_STRING deviceName;
-    UNICODE_STRING symbolicLinkName;
-    PDEVICE_OBJECT deviceObject = NULL;
-
+    UNREFERENCED_PARAMETER(RegistryPath);
     UNREFERENCED_PARAMETER(RegistryPath);
 
-
+    DbgPrintEx(0, 0, "TESTING KDMAPPER");
     return STATUS_SUCCESS;
 }
