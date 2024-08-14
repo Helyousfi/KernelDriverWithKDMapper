@@ -1,5 +1,6 @@
-#include <ntddk.h>
+#include <ntdef.h>
 #include <ntifs.h>
+#include <ntddk.h>
 #include <windef.h>
 #include <ntstrsafe.h>
 
@@ -9,7 +10,7 @@ DriverEntry(
     PUNICODE_STRING  RegistryPath
 )
 {
-    UNREFERENCED_PARAMETER(RegistryPath);
+    UNREFERENCED_PARAMETER(DriverObject);
     UNREFERENCED_PARAMETER(RegistryPath);
 
     DbgPrintEx(0, 0, "TESTING KDMAPPER");

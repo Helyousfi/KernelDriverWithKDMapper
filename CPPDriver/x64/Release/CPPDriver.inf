@@ -1,0 +1,62 @@
+;
+; CPPDriver.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System ; TODO: specify appropriate Class
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider    = %ManufacturerName%
+CatalogFile = CPPDriver.cat
+DriverVer = 08/14/2024,22.29.27.349
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+CPPDriver.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NTamd64.10.0...16299]
+%CPPDriver.DeviceDesc% = CPPDriver_Device, Root\CPPDriver ; TODO: edit hw-id
+
+[CPPDriver_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+CPPDriver.sys
+
+;-------------- Service installation
+[CPPDriver_Device.NT.Services]
+AddService = CPPDriver,%SPSVCINST_ASSOCSERVICE%, CPPDriver_Service_Inst
+
+; -------------- CPPDriver driver install sections
+[CPPDriver_Service_Inst]
+DisplayName    = %CPPDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\CPPDriver.sys
+
+[CPPDriver_Device.NT.Wdf]
+KmdfService = CPPDriver, CPPDriver_wdfsect
+
+[CPPDriver_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "CPPDriver Installation Disk"
+CPPDriver.DeviceDesc = "CPPDriver Device"
+CPPDriver.SVCDESC = "CPPDriver Service"
