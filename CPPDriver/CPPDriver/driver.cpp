@@ -1,8 +1,4 @@
-#include <ntdef.h>
-#include <ntifs.h>
-#include <ntddk.h>
-#include <windef.h>
-#include <ntstrsafe.h>
+#include "driver.h"
 
 extern "C" NTSTATUS
 DriverEntry(
