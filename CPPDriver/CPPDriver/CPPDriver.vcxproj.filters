@@ -22,5 +22,10 @@
     <Inf Include="CPPDriver.inf">
       <Filter>Driver Files</Filter>
     </Inf>
-  </ItemGroup>  
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="driver.cpp">
+      <Filter>Driver Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
