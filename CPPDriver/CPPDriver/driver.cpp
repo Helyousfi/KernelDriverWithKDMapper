@@ -1,14 +1,11 @@
-#include "driver.h"
+#include "hook.h"
 
-extern "C" NTSTATUS
-DriverEntry(
-    PDRIVER_OBJECT   DriverObject,
-    PUNICODE_STRING  RegistryPath
-)
+extern "C" NTSTATUS DriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING reg_path)
 {
-    UNREFERENCED_PARAMETER(DriverObject);
-    UNREFERENCED_PARAMETER(RegistryPath);
+	UNREFERENCED_PARAMETER(driver_object);
+	UNREFERENCED_PARAMETER(reg_path);
 
-    DbgPrintEx(0, 0, "TESTING KDMAPPER");
-    return STATUS_SUCCESS;
+	nullhook::call_kernel_function(&nullhook::hook_handler);
+
+	return STATUS_SUCCESS;
 }

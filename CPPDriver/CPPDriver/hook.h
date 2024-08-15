@@ -27,5 +27,4 @@ namespace nullhook
 {
 	bool call_kernel_function(void* kernel_function_address);
 	NTSTATUS hook_handler(PVOID called_param);
-	INT FrameRect(HDC hDC, CONST RECT* lprc, HBRUSH hbr, int thickness);
 }
