@@ -1,8 +1,3 @@
-/*"""
-This code header file is a collection of structures, enumerations, and function prototypes used for low-level operations in a 
-Windows kernel-mode driver. It deals with system information, process information, memory protection, and image export 
-directory handling.
-""" */
 #include <ntdef.h>
 #include <ntifs.h>
 #include <ntddk.h>
