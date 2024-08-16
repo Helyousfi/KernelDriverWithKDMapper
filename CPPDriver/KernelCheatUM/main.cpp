@@ -31,7 +31,8 @@ HDC hdc;
 template<typename ... Arg>
 uint64_t call_hook(const Arg ... args)
 {
-	void* hooked_func = GetProcAddress(LoadLibrary((LPCWSTR)"win32u.dll"), "NtDxgkGetTrackedWorkloadStatistics");
+	void* hooked_func = GetProcAddress(LoadLibrary(L"win32u.dll"), "NtDxgkGetTrackedWorkloadStatistics");
+
 
 	auto func = static_cast<uint64_t(_stdcall*)(Arg...)>(hooked_func);
 
