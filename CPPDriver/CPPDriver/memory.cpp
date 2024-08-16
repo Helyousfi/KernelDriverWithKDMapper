@@ -8,7 +8,7 @@ PVOID get_system_module_base(const char* module_name)
 	if (!bytes)
 		return NULL;
 
-	PRTL_PROCESS_MODULES modules = (PRTL_PROCESS_MODULES)ExAllocatePoolWithTag(NonPagedPool, bytes, 0x4e554c4c);
+	PRTL_PROCESS_MODULES modules = (PRTL_PROCESS_MODULES)ExAllocatePool2(NonPagedPool, bytes, 0x4e554c4c);
 
 	status = ZwQuerySystemInformation(SystemModuleInformation, modules, bytes, &bytes);
 
@@ -89,7 +89,7 @@ bool write_memory(void* address, void* buffer, size_t size)
 
 bool write_to_read_only_memory(void* address, void* buffer, size_t size)
 {
-	PMDL Mdl = IoAllocateMdl(address, size, FALSE, FALSE, NULL);
+	PMDL Mdl = IoAllocateMdl(address, (ULONG)size, FALSE, FALSE, NULL);
 
 	if (!Mdl)
 		return false;

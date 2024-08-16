@@ -31,7 +31,7 @@ HDC hdc;
 template<typename ... Arg>
 uint64_t call_hook(const Arg ... args)
 {
-	void* hooked_func = GetProcAddress(LoadLibrary("win32u.dll"), "NtDxgkGetTrackedWorkloadStatistics");
+	void* hooked_func = GetProcAddress(LoadLibrary((LPCWSTR)"win32u.dll"), "NtDxgkGetTrackedWorkloadStatistics");
 
 	auto func = static_cast<uint64_t(_stdcall*)(Arg...)>(hooked_func);
 
@@ -50,6 +50,9 @@ struct HandleDisposer
 	}
 };
 
+
+
+
 using unique_handle = std::unique_ptr<HANDLE, HandleDisposer>;
 
 std::uint32_t get_process_id(std::string_view process_name)
@@ -64,7 +67,7 @@ std::uint32_t get_process_id(std::string_view process_name)
 
 	while (Process32Next(snapshot_handle.get(), &processentry) == TRUE)
 	{
-		if (process_name.compare(processentry.szExeFile) == NULL)
+		if (process_name.compare((const char*)processentry.szExeFile) == NULL)
 		{
 			return processentry.th32ProcessID;
 		}
