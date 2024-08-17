@@ -1,3 +1,9 @@
+/*
+- Defines function prototypes for the hook handling. 
+It declares function pointers for GDI-related operations and a namespace nullhook that contains 
+functions for hooking into the kernel.
+- The purpose here is to inject or modify behavior in GDI.
+*/
 #pragma once
 
 #include "memory.h"

@@ -1,3 +1,9 @@
+/*
+- Provides functions for memory manipulation, such as reading and writing memory, 
+obtaining system module bases and exports, and managing memory in the context of processes.
+- This header contains critical functionality for interacting with and modifying 
+memory in the kernel space, including dealing with read-only memory and accessing kernel memory.
+*/
 #pragma once
 #include "definitions.h"
 

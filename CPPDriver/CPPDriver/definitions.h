@@ -1,3 +1,9 @@
+/*
+- Contains various data structures and definitions that are essential for interacting with the 
+Windows kernel, such as structures for system information, process information, and memory operations.
+- This header is crucial for defining the structures and enums used in system calls and memory 
+operations.
+*/
 #include <ntdef.h>
 #include <ntifs.h>
 #include <ntddk.h>
